@@ -60,9 +60,9 @@ const AddToDo = ({addTodo}) => {
     )
 }
 
-const mapStateToProps=(state)=>({})
+const mapStateToProps=(state)=>({}) //for states present in store
 
-const mapDispatchToProps=(dispatch)=>(
+const mapDispatchToProps=(dispatch)=>( //for action present in store
     {
         addTodo:todo=>(dispatch(addTodo(todo)))
     }

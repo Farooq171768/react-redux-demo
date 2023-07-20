@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { deleteTodo } from '../redux/actions/todo'
 
 
-const DisplayToDos = ({todoList,deleteTodo}) => {
-    const [todoState,setTodoState]=useState([])
-    
+const DisplayToDos = ({todoos,deleteTodo}) => {
+   // const [todos,setTodos]=useState([])
+
     return (
         <Container>
             <Row>
@@ -18,11 +18,12 @@ const DisplayToDos = ({todoList,deleteTodo}) => {
                             <DisplayCount/>
                             <ListGroup>
                                 {
-                                    todoState.map((todo,index)=>
+                                    todoos.map((todo,index)=>
                                     <ListGroup.Item key={index}>
                                             <h4>{todo.title}</h4>
                                             <p>{todo.description}</p>
-                                            <Button onClick={()=>deleteTodo(todo.id)}variant='danger' size='sm'>Delete</Button>
+                                            <Button onClick={()=>deleteTodo(todo.id)} variant='danger' size='sm'>
+                                                Delete</Button>
                                     </ListGroup.Item>
                                     )
                                 }
@@ -37,7 +38,7 @@ const DisplayToDos = ({todoList,deleteTodo}) => {
 
 const mapStateToProps=state=>{
     console.log(state)
-    return {todoList:state.todo}
+    return {todoos:state.todoos}
 }
 const mapDispatchToProps=dispatch=>({
     deleteTodo:id=>(dispatch(deleteTodo(id)))
